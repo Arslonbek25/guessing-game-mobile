@@ -6,6 +6,7 @@ import GameOverScreen from "./screens/GameOverScreen";
 import GameScreen from "./screens/GameScreen";
 import StartGameScreen from "./screens/StartGameScreen";
 import { useFonts } from "expo-font";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
 	const [fontsLoaded] = useFonts({
@@ -22,7 +23,7 @@ export default function App() {
 	}
 
 	function gameOverHandler(rounds) {
-		setRounds(rounds)
+		setRounds(rounds);
 		setGameOver(true);
 	}
 
@@ -51,17 +52,20 @@ export default function App() {
 	}
 
 	return (
-		<LinearGradient
-			colors={[Colors.primary700, Colors.accent500]}
-			style={styles.rootScreen}>
-			<ImageBackground
-				source={require("./assets/image/background.png")}
-				resizeMode="cover"
-				style={styles.rootScreen}
-				imageStyle={styles.backgroundImage}>
-				<SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
-			</ImageBackground>
-		</LinearGradient>
+		<>
+			<StatusBar style="light" />
+			<LinearGradient
+				colors={[Colors.primary700, Colors.accent500]}
+				style={styles.rootScreen}>
+				<ImageBackground
+					source={require("./assets/image/background.png")}
+					resizeMode="cover"
+					style={styles.rootScreen}
+					imageStyle={styles.backgroundImage}>
+					<SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+				</ImageBackground>
+			</LinearGradient>
+		</>
 	);
 }
 
